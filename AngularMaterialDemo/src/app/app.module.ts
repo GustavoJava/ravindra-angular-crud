@@ -22,6 +22,7 @@ import { AddUpdateUsersComponent } from './components/add-update-users/add-updat
 import { LoadUsersComponent } from './components/load-users/load-users.component';
 import { NavComponent } from './components/nav/nav.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
     NavComponent,
     NotfoundComponent,
     LoadUsersComponent,
-    AddUpdateUsersComponent
+    AddUpdateUsersComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,7 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSortModule
+    MatSortModule,
 
   ],
   providers: [],

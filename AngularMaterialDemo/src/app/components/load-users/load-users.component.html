@@ -1,8 +1,7 @@
 <h2>Users</h2>
 
 <mat-form-field appearance="standard">
-  <mat-label>Buscar</mat-label>
-  <input matInput (keyup)="applyFilter($event)" placeholder="buscar users" #input>
+  <input matInput (keyup)="applyFilter($event)" placeholder="search users" #input>
 </mat-form-field>
 <span class="btn-spacer"></span>
 <button mat-raised-button color="primary" [routerLink]="'/users/add'">
