@@ -23,7 +23,7 @@ export class LoadUsersComponent implements OnInit, AfterViewInit {
   pageSizeOptions=[3,6,9,12];
   pageSize=3;
   pageIndex=0
-  pageLength=0; //total records in db
+  pageLength=0; //total records in db..
 
   dataSourceFilters = new MatTableDataSource(this.dataSource.data);
 
