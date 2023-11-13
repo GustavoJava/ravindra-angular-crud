@@ -1,0 +1,54 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Mary Lee",
+      "email": "mary@gmail.com"
+    },
+    {
+      "id": 2,
+      "name": "Max Yonic",
+      "email": "yonic@gmail.com"
+    },
+    {
+      "id": 3,
+      "name": "Mathew Duarte",
+      "email": "mathewbrother@hotmail.com"
+    },
+    {
+      "id": 4,
+      "name": "Layla",
+      "email": "layla@hotmail.com"
+    },
+    {
+      "id": 5,
+      "name": "Shakira",
+      "email": "shakira@hotmail.com"
+    },
+    {
+      "id": 6,
+      "name": "Litsz Runky",
+      "email": "runky@hotmail.com"
+    },
+    {
+      "id": 7,
+      "name": "Lars Ulrich",
+      "email": "ulrich@hotmail.com"
+    },
+    {
+      "id": 8,
+      "name": "Akran Geylous",
+      "email": "geylous@gmail.com"
+    },
+    {
+      "id": 9,
+      "name": "Alana Xin",
+      "email": "xin@hotmail.com"
+    },
+    {
+      "id": 10,
+      "name": "Ana Lee",
+      "email": "anlee@hotmail.com"
+    }
+  ]
+}
