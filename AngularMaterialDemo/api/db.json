@@ -7,7 +7,7 @@
     },
     {
       "id": 2,
-      "name": "Max Yonic",
+      "name": "Max Yonik",
       "email": "yonic@gmail.com"
     },
     {
@@ -54,6 +54,11 @@
       "id": 11,
       "name": "Olga Rakutz",
       "email": "olga@gmail.com"
+    },
+    {
+      "id": 12,
+      "name": "Svetlana Rakovitz",
+      "email": "kovitz@gmail.com"
     }
   ]
 }
