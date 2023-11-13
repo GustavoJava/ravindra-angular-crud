@@ -7,15 +7,16 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 
 const routes: Routes = [
-  {path:'welcome', component: WelcomeComponent},
-  {path:'users/add', component: AddUpdateUsersComponent},
-  {path:'users/edit/:id', component: AddUpdateUsersComponent},
-  {path:'users', component: LoadUsersComponent},
-  {path:'**', component: NotfoundComponent},
+  { path: 'welcome', component: WelcomeComponent },
+  { path: 'users/add', component: AddUpdateUsersComponent },
+  { path: 'users/edit/:id', component: AddUpdateUsersComponent },
+  { path: 'users', component: LoadUsersComponent },
+  { path: '', component: WelcomeComponent },
+  { path: '**', component: NotfoundComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

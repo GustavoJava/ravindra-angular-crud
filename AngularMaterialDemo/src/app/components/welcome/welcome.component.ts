@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WelcomeComponent implements OnInit {
 
-  longText = 'Welcome Angular Material Users CRUD';
-  text = 'I hope you improve your skills';
+  welcomeText = 'Welcome Angular Material Users CRUD';
+  skillText = 'I hope you improve your skills';
 
   constructor() { }
 
