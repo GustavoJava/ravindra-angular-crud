@@ -1,0 +1,60 @@
+<h2>Users</h2>
+
+<mat-form-field appearance="standard">
+  <input matInput (keyup)="applyFilter($event)" placeholder="search users" #input>
+</mat-form-field>
+<span class="btn-spacer"></span>
+<button mat-raised-button color="primary" [routerLink]="'/users/add'">
+  Add New User
+  <mat-icon>add</mat-icon>
+</button>
+
+<div *ngIf="dataSource.data.length>0;else wait">
+  <mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort #empTbSort="matSort">
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell mat-sort-header *matHeaderCellDef> Id </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell mat-sort-header *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <mat-header-cell mat-sort-header *matHeaderCellDef> Email </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="action-link">
+        <button mat-icon-button color="primary" aria-label="edit icon" (click)="onBtnEdit(element.id)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" aria-label="delete icon" (click)="onBtnDelete(element.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator class="mat-elevation-z8"
+    [length]="pageLength"
+    [pageIndex]="pageIndex"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    [showFirstLastButtons]="true"
+    (page)="changePage($event)"
+    aria-label="Select page">
+  </mat-paginator>
+
+</div>
+
+<ng-template #wait>
+  Either fetching records or there are no records
+</ng-template>
