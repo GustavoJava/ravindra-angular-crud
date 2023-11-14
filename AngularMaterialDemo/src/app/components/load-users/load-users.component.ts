@@ -6,6 +6,9 @@ import { UserModel } from 'src/app/models/user.model';
 
 import { UserService } from './../../services/user.service';
 import { MatSort } from '@angular/material/sort';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDeleteDialogComponent } from '../confirm-delete-dialog/confirm-delete-dialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -28,7 +31,9 @@ export class LoadUsersComponent implements OnInit, AfterViewInit {
   dataSourceFilters = new MatTableDataSource(this.dataSource.data);
 
   constructor(private userService:UserService,
-              private router: Router) { }
+              public dialog: MatDialog,
+              private router: Router,
+              private snackBar: MatSnackBar) { }
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.empTbSort;
@@ -73,22 +78,43 @@ export class LoadUsersComponent implements OnInit, AfterViewInit {
     this.router.navigate(['users/edit/'+id]);
   }
 
-  onBtnDelete(id: number) {
-    if(window.confirm('Deseja realmente deletar?')){
-      this.userService.delete(id).subscribe({
-        next:(response)=>{
-          if(this.dataSource.data.length===1 && this.pageIndex>0)
-            this.pageIndex--;
-            this.loadUsers();
-        }
-      })
-    }
+  onBtnDelete(user: UserModel) {
+    const dialogRef = this.dialog.open(ConfirmDeleteDialogComponent, {
+      data: `Are you sure delete user ${user.name} ?`
+    });
+
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      if (result) {
+        this.userService.delete(user.id).subscribe({
+              next:(response)=> {
+                if(this.dataSource.data.length === 1 && this.pageIndex>0)
+                  this.pageIndex--;
+                  this.onSucess();
+                  this.loadUsers();
+              }
+            })
+          }
+    }, error => this.onError());
   }
 
   changePage(event:PageEvent){
     this.pageSize=event.pageSize;
     this.pageIndex=event.pageIndex;
     this.loadUsers();
+  }
+
+  onSucess(){
+    this.snackBar.open('Operação realizada com sucesso!','X', {
+          duration: 3000,
+          verticalPosition: 'top'
+    })
+  }
+
+  onError(){
+    this.snackBar.open('Erro ao realizar operação!','X', {
+          duration: 3000,
+          verticalPosition: 'top'
+    })
   }
 
 }

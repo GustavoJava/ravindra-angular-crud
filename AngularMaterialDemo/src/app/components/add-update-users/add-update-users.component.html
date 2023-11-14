@@ -11,7 +11,7 @@
   <form #userForm="ngForm" [formGroup]="frm" (ngSubmit)="onPost()">
     <input type="hidden" formControlName="id"/>
     <mat-form-field class="w-80">
-      <mat-label>Name</mat-label>
+      <mat-label>Name*</mat-label>
       <input matInput formControlName="name"
              [errorStateMatcher]="errorMatcher">
       <mat-error *ngIf="f['name'].errors?.required">
@@ -19,7 +19,7 @@
       </mat-error>
     </mat-form-field>
     <mat-form-field class="w-80">
-      <mat-label>Email</mat-label>
+      <mat-label>Email*</mat-label>
       <input matInput formControlName="email"
              [errorStateMatcher]="errorMatcher"
              placeholder="example@domain.com">
@@ -32,8 +32,8 @@
   </mat-form-field>
     <p>
       <button type="submit"
-      mat-raised-button color="primary"
-      [disabled]="frm.invalid">{{action}}</button>
+              mat-raised-button color="primary"
+              [disabled]="frm.invalid">{{action}}</button>
     </p>
     </form>
 </mat-card-content>
