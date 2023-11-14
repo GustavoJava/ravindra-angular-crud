@@ -23,7 +23,7 @@
     {
       "id": 5,
       "name": "Shakira",
-      "email": "shakira@hotmail.com"
+      "email": "kira@hotmail.com"
     },
     {
       "id": 6,
@@ -37,8 +37,8 @@
     },
     {
       "id": 8,
-      "name": "Akran Geylous",
-      "email": "geylous@gmail.com"
+      "name": "Akran Gaylous",
+      "email": "gaylous@gmail.com"
     },
     {
       "id": 9,
@@ -59,6 +59,16 @@
       "id": 12,
       "name": "Svetlana Rakovitz",
       "email": "kovitz@gmail.com"
+    },
+    {
+      "id": 13,
+      "name": "Adryana",
+      "email": "dry@gmail.com"
+    },
+    {
+      "id": 14,
+      "name": "DELETE DELETE DELETE",
+      "email": "delete@gmail.com"
     }
   ]
 }
