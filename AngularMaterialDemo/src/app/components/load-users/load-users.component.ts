@@ -1,15 +1,14 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { UserModel } from 'src/app/models/user.model';
-
-import { UserService } from './../../services/user.service';
-import { MatSort } from '@angular/material/sort';
-import { MatDialog } from '@angular/material/dialog';
-import { ConfirmDeleteDialogComponent } from '../confirm-delete-dialog/confirm-delete-dialog.component';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { MessageService } from 'src/app/services/message.service';
+
+import { ConfirmDeleteDialogComponent } from '../confirm-delete-dialog/confirm-delete-dialog.component';
+import { UserService } from './../../services/user.service';
 
 @Component({
   selector: 'app-load-users',
@@ -107,4 +106,5 @@ export class LoadUsersComponent implements OnInit, AfterViewInit {
       window.location.reload();
     }, 2000);
   }
+
 }
