@@ -17,6 +17,9 @@
       <mat-error *ngIf="f['name'].errors?.required">
           Nome obrigatório
       </mat-error>
+      <mat-error *ngIf="f['name'].errors?.minlength">
+          Nome deve conter no mínimo 3 caracteres!
+      </mat-error>
     </mat-form-field>
     <mat-form-field class="w-80">
       <mat-label>Email*</mat-label>

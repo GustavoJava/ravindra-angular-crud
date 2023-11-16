@@ -45,7 +45,7 @@ export class AddUpdateUsersComponent implements OnInit {
   initForm() {
     this.frm = this.formBuilder.group({
       id: [0],
-      name: ['', Validators.required],
+      name: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
     });
   }
