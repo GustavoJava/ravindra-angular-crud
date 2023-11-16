@@ -67,8 +67,13 @@
     },
     {
       "id": 14,
-      "name": "DELETE DELETE DELETE",
-      "email": "delete@gmail.com"
+      "name": "teste",
+      "email": "teste@gmail.com"
+    },
+    {
+      "id": 15,
+      "name": "tester",
+      "email": "tester@gmail.com"
     }
   ]
 }

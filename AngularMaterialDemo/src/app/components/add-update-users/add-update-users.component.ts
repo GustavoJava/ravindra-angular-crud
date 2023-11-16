@@ -34,7 +34,7 @@ export class AddUpdateUsersComponent implements OnInit {
       this.action = "Update";
       this.userService.getById(id).subscribe(response =>{
         this.frm.patchValue(response);
-      },error=>console.log(error)
+      },()=>this.onError()
       )
     }
   }
@@ -58,35 +58,15 @@ export class AddUpdateUsersComponent implements OnInit {
       this.usrForm.resetForm();
       this.onSucess();
       this.redirectToUsers();
-    }),
-      this.onError();
+    },()=>this.onError())
+
   }
 
   redirectToUsers(){
     setTimeout(() => {
       this.router.navigate(['/users']);
-    }, 2000);
+    },2000);
   }
-
-  // onPost() {
-  //   const form = (this.frm.value);
-  //   this.userService.addUser(form).subscribe({
-  //     next:(data)=>{
-  //       this.usrForm.reset();
-  //       this.usrForm.resetForm();
-  //       this.snackBar.open('Sucess','close', {
-  //         duration: 3000
-  //       })
-  //     },
-  //     error:(err)=>{
-  //       console.log(err);
-  //       this.snackBar.open('Sucess','close', {
-  //         duration: 3000
-  //       })
-  //     }
-  //   })
-
-  // }
 
   onSucess(){
     this.snackBar.open('Operação realizada com sucesso!','X', {
