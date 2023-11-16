@@ -12,7 +12,7 @@ export class MessageService {
     this.snackBar.open('Operação realizada com sucesso!', 'X', {
       duration: 3000,
       verticalPosition: 'top',
-      panelClass: ['green-snackbar', 'login-snackbar'],
+      panelClass: ['green-snackbar'],
     });
   }
 
@@ -20,7 +20,7 @@ export class MessageService {
     this.snackBar.open('Erro ao realizar operação!', 'X', {
       duration: 3000,
       verticalPosition: 'top',
-      panelClass: ['red-snackbar', 'login-snackbar'],
+      panelClass: ['red-snackbar'],
     });
   }
 }
