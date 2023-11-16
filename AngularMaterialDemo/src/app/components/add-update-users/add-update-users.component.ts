@@ -1,27 +1,28 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MyErrorStateMatcher } from 'src/app/models/MyErrorStateMatcher';
+import { MessageService } from 'src/app/services/message.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-add-update-users',
   templateUrl: './add-update-users.component.html',
-  styleUrls: ['./add-update-users.component.scss']
+  styleUrls: ['./add-update-users.component.scss'],
 })
 export class AddUpdateUsersComponent implements OnInit {
-
-  frm!:FormGroup;
+  frm!: FormGroup;
   action = 'Add';
   errorMatcher = new MyErrorStateMatcher();
-  @ViewChild("userForm") usrForm!:NgForm; //resetar mensagens da validação.
+  @ViewChild('userForm') usrForm!: NgForm; //resetar mensagens da validação.
 
-  constructor(private route: ActivatedRoute,
-              private router: Router,
-              private formBuilder:FormBuilder,
-              private userService: UserService,
-              private snackBar: MatSnackBar) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private userService: UserService,
+    private messageService: MessageService
+  ) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -30,21 +31,23 @@ export class AddUpdateUsersComponent implements OnInit {
 
   getUserById() {
     const id = this.route.snapshot.params['id'];
-    if(id){
-      this.action = "Update";
-      this.userService.getById(id).subscribe(response =>{
-        this.frm.patchValue(response);
-      },()=>this.onError()
-      )
+    if (id) {
+      this.action = 'Update';
+      this.userService.getById(id).subscribe(
+        (response) => {
+          this.frm.patchValue(response);
+        },
+        () => this.messageService.onError()
+      );
     }
   }
 
-  initForm(){
-    this.frm= this.formBuilder.group({
-      id:[0],
-      name:['',Validators.required],
-      email:['',[Validators.required,Validators.email]]
-    })
+  initForm() {
+    this.frm = this.formBuilder.group({
+      id: [0],
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+    });
   }
 
   get f() {
@@ -52,34 +55,20 @@ export class AddUpdateUsersComponent implements OnInit {
   }
 
   onPost() {
-    const form = (this.frm.value);
-    this.userService.addUser(form).subscribe(() =>{
-      this.usrForm.reset();
-      this.usrForm.resetForm();
-      this.onSucess();
-      this.redirectToUsers();
-    },()=>this.onError())
-
+    const form = this.frm.value;
+    this.userService.addUser(form).subscribe(
+      () => {
+        this.usrForm.reset();
+        this.usrForm.resetForm();
+        this.messageService.onSucess();
+        this.redirectToUsers();
+      },() => this.messageService.onError()
+    );
   }
 
-  redirectToUsers(){
+  redirectToUsers() {
     setTimeout(() => {
       this.router.navigate(['/users']);
-    },2000);
+    }, 1000);
   }
-
-  onSucess(){
-    this.snackBar.open('Operação realizada com sucesso!','X', {
-          duration: 3000,
-          verticalPosition: 'top'
-    })
-  }
-
-  onError(){
-    this.snackBar.open('Erro ao realizar operação!','X', {
-          duration: 3000,
-          verticalPosition: 'top'
-    })
-  }
-
 }
