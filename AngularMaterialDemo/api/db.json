@@ -1,59 +1,9 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "Mary Lee",
-      "email": "mary@gmail.com"
-    },
-    {
-      "id": 2,
-      "name": "Max Yonik",
-      "email": "yonic@gmail.com"
-    },
-    {
-      "id": 3,
-      "name": "Mathew Duarte",
-      "email": "mathewbrother@hotmail.com"
-    },
-    {
-      "id": 4,
-      "name": "Layla Lee",
-      "email": "layla@hotmail.com"
-    },
-    {
-      "id": 5,
-      "name": "Shakira",
-      "email": "kira@hotmail.com"
-    },
-    {
-      "id": 6,
-      "name": "Litsz Runky",
-      "email": "runky@hotmail.com"
-    },
-    {
-      "id": 7,
-      "name": "Lars Ulrich",
-      "email": "ulrich@hotmail.com"
-    },
-    {
       "id": 8,
       "name": "Akran Gaylous",
       "email": "gaylous@gmail.com"
-    },
-    {
-      "id": 9,
-      "name": "Alanis Xin",
-      "email": "xin@hotmail.com"
-    },
-    {
-      "id": 10,
-      "name": "Ana Lee",
-      "email": "anlee@hotmail.com"
-    },
-    {
-      "id": 11,
-      "name": "Olga Rakutz",
-      "email": "olga@gmail.com"
     },
     {
       "id": 12,
@@ -62,18 +12,23 @@
     },
     {
       "id": 13,
-      "name": "Adryana",
-      "email": "dry@gmail.com"
+      "name": "Guida Frankz",
+      "email": "fran@gmail.com"
     },
     {
       "id": 14,
-      "name": "teste",
-      "email": "teste@gmail.com"
+      "name": "Akronys Russef",
+      "email": "russef@gmail.com"
     },
     {
-      "id": 15,
-      "name": "tester",
-      "email": "tester@gmail.com"
+      "id": 16,
+      "name": "Havany Rakun",
+      "email": "rakun@gmail.com"
+    },
+    {
+      "id": 17,
+      "name": "Hateos Sean",
+      "email": "sean@gmail.com"
     }
   ]
 }

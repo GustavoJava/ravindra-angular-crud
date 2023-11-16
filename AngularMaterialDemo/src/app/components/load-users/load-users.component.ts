@@ -9,6 +9,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDeleteDialogComponent } from '../confirm-delete-dialog/confirm-delete-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MessageService } from 'src/app/services/message.service';
 
 @Component({
   selector: 'app-load-users',
@@ -30,9 +31,9 @@ export class LoadUsersComponent implements OnInit, AfterViewInit {
 
   constructor(
     private userService: UserService,
-    public dialog: MatDialog,
+    public  dialog: MatDialog,
     private router: Router,
-    private snackBar: MatSnackBar
+    private messageService: MessageService
   ) {}
 
   ngAfterViewInit(): void {
@@ -48,7 +49,7 @@ export class LoadUsersComponent implements OnInit, AfterViewInit {
     this.userService.getUsers(this.pageIndex + 1, this.pageSize).subscribe((response) => {
         this.dataSource.data = response.users;
         this.pageLength = response.count;
-      },() => this.onError()
+      },() => this.messageService.onError()
     );
   }
 
@@ -83,16 +84,16 @@ export class LoadUsersComponent implements OnInit, AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe((result: boolean) => {
-        if (result) {
-          this.userService.delete(user.id).subscribe(()=>{
-              if (this.dataSource.data.length === 1 && this.pageIndex > 0)
-                this.pageIndex--;
-              this.onSucess();
-              this.loadUsers();
-          },()=> this.onError());
-        }
+      if (result) {
+        this.userService.delete(user.id).subscribe(() => {
+            if (this.dataSource.data.length === 1 && this.pageIndex > 0)
+              this.pageIndex--;
+              this.messageService.onSucess();
+              this.reload();
+          },() => this.messageService.onError()
+        );
       }
-    );
+    });
   }
 
   changePage(event: PageEvent) {
@@ -101,26 +102,9 @@ export class LoadUsersComponent implements OnInit, AfterViewInit {
     this.loadUsers();
   }
 
-  onSucess() {
-    this.snackBar.open('Operação realizada com sucesso!', 'X', {
-      duration: 3000,
-      verticalPosition: 'top',
-    });
-    this.reload();
-  }
-
-  onError() {
-    this.snackBar.open('Erro ao realizar operação!', 'X', {
-      duration: 3000,
-      verticalPosition: 'top',
-    });
-    this.reload();
-  }
-
   reload() {
     setTimeout(() => {
       window.location.reload();
-    }, 1000);
+    }, 2000);
   }
-
 }
