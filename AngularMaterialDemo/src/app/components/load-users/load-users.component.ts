@@ -25,6 +25,7 @@ export class LoadUsersComponent implements OnInit, AfterViewInit {
   pageSize = 5;
   pageIndex = 0;
   pageLength = 0; //total records in db..
+  count = 0;
 
   dataSourceFilters = new MatTableDataSource(this.dataSource.data);
 
@@ -48,6 +49,7 @@ export class LoadUsersComponent implements OnInit, AfterViewInit {
     this.userService.getUsers(this.pageIndex + 1, this.pageSize).subscribe((response) => {
         this.dataSource.data = response.users;
         this.pageLength = response.count;
+        this.count = response.count;
       },() => this.messageService.onError()
     );
   }

@@ -1,13 +1,16 @@
 <h2>Users</h2>
+<h4 *ngIf="dataSource.data.length>0">{{count}} user(s) registered </h4>
 
-<mat-form-field appearance="standard">
-  <input matInput (keyup)="applyFilter($event)" placeholder="search users" #input>
-</mat-form-field>
-<span class="btn-spacer"></span>
-<button mat-raised-button color="primary" [routerLink]="'/users/add'">
-  Add New User
-  <mat-icon>add</mat-icon>
-</button>
+<div *ngIf="dataSource.data.length>0">
+  <mat-form-field appearance="standard">
+    <input matInput (keyup)="applyFilter($event)" placeholder="search users" #input>
+  </mat-form-field>
+  <span class="btn-spacer"></span>
+  <button mat-raised-button color="primary" [routerLink]="'/users/add'">
+    Add New User
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
 
 <div *ngIf="dataSource.data.length>0;else wait">
   <mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort #empTbSort="matSort">
@@ -55,6 +58,8 @@
 
 </div>
 
-<ng-template #wait>
-  Either fetching records or there are no records
+<ng-template #wait >
+  <div class="wait">
+    <h3> Either fetching records or there are no records</h3>
+  </div>
 </ng-template>
