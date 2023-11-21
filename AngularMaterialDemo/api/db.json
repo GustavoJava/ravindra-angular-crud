@@ -11,14 +11,9 @@
       "email": "kovitz@gmail.com"
     },
     {
-      "id": 13,
-      "name": "Guida Frankz",
-      "email": "fran@gmail.com"
-    },
-    {
       "id": 14,
-      "name": "Akronys Russef",
-      "email": "russef@gmail.com"
+      "name": "Akronys Rassef",
+      "email": "rassef@gmail.com"
     },
     {
       "id": 16,
@@ -32,8 +27,18 @@
     },
     {
       "id": 18,
-      "name": "Xing Yun Han",
+      "name": "Ching Yun Han",
       "email": "han@gmail.com"
+    },
+    {
+      "id": 19,
+      "name": "Havel Kintana",
+      "email": "kintana@gmail.com"
+    },
+    {
+      "id": 20,
+      "name": "Ana Kovitz",
+      "email": "ana@gmail.com"
     }
   ]
 }
