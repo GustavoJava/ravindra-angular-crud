@@ -56,8 +56,7 @@ export class AddUpdateUsersComponent implements OnInit {
 
   onPost() {
     const form = this.frm.value;
-    this.userService.addUser(form).subscribe(
-      () => {
+    this.userService.addUser(form).subscribe(() => {
         this.usrForm.reset();
         this.usrForm.resetForm();
         this.messageService.onSucess();

@@ -27,6 +27,8 @@ export class LoadUsersComponent implements OnInit, AfterViewInit {
   pageLength = 0; //total records in db..
   count = 0;
 
+  datasource = new MatTableDataSource<UserModel>();
+
   dataSourceFilters = new MatTableDataSource(this.dataSource.data);
 
   constructor(
@@ -63,16 +65,16 @@ export class LoadUsersComponent implements OnInit, AfterViewInit {
   }
   //https://stackblitz.com/angular/dnbermjydavk?file=app%2Ftable-overview-example.html,app%2Ftable-overview-example.ts
   loadDataFilter() {
-    this.dataSourceFilters.filterPredicate = function (record, filter) {
-      debugger;
-      var map = new Map(JSON.parse(filter));
-      let isMatch = false;
-      for (let [key, value] of map) {
-        isMatch = value == 'All' || record[key as keyof UserModel] == value;
-        if (!isMatch) return false;
-      }
-      return isMatch;
-    };
+    // this.dataSourceFilters.filterPredicate = function (record, filter) {
+    //   debugger;
+    //   var map = new Map(JSON.parse(filter));
+    //   let isMatch = false;
+    //   for (let [key, value] of map) {
+    //     isMatch = value == 'All' || record[key as keyof UserModel] == value;
+    //     if (!isMatch) return false;
+    //   }
+    //   return isMatch;
+    // };
   }
 
   onBtnEdit(id: number) {

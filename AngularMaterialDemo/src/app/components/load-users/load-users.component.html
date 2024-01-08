@@ -12,9 +12,8 @@
   </button>
 </div>
 
-<div *ngIf="dataSource.data.length>0;else wait">
+<div>
   <mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort #empTbSort="matSort">
-
     <ng-container matColumnDef="id">
       <mat-header-cell mat-sort-header *matHeaderCellDef> Id </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
@@ -42,11 +41,19 @@
       </mat-cell>
     </ng-container>
 
+    <tr *matNoDataRow class="noRecord">
+      <td *ngIf="dataSource.data.length === 0">
+        <h4>Nenhum registro encontrado!</h4>
+      </td>
+    </tr>
+
     <mat-header-row *matHeaderRowDef="displayColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayColumns;"></mat-row>
   </mat-table>
 
-  <mat-paginator class="mat-elevation-z8"
+  <mat-paginator
+    *ngIf="dataSource.data.length>0"
+    class="mat-elevation-z8"
     [length]="pageLength"
     [pageIndex]="pageIndex"
     [pageSize]="pageSize"

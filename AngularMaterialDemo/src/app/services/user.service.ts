@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators'
+import { map } from 'rxjs/operators';
 
 import { UserModel } from '../models/user.model';
 
@@ -30,9 +30,6 @@ export class UserService {
    getById= (id:number)=> this.http.get<UserModel>(this.baseUrl+`/${id}`)
 
    delete= (id:number)=> this.http.delete<any>(this.baseUrl+`/${id}`)
-
-
-
 
 
   constructor(private http:HttpClient) { }
