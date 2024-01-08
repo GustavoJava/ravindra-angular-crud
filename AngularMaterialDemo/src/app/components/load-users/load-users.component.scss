@@ -11,3 +11,14 @@ table {
   text-align: center;
 }
 
+.noRecord {
+  font-weight: bold;
+  font-size: medium;
+  color: red;
+}
+
+tr, td {
+  display: flex;
+  justify-content: center;
+}
+
