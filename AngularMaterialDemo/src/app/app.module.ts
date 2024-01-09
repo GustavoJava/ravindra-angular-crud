@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSortModule } from '@angular/material/sort';
@@ -25,7 +26,6 @@ import { LoadUsersComponent } from './components/load-users/load-users.component
 import { NavComponent } from './components/nav/nav.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
-
 
 @NgModule({
   declarations: [
@@ -55,7 +55,8 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
     MatFormFieldModule,
     MatInputModule,
     MatSortModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressSpinnerModule
 
   ],
   providers: [],

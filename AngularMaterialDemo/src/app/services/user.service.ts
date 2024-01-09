@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { delay, map } from 'rxjs/operators';
 
 import { UserModel } from '../models/user.model';
 
@@ -20,6 +20,7 @@ export class UserService {
   getUsers=(page=1,limit=10)=>
            this.http.get(this.baseUrl+`?_page=${page}&_limit=${limit}`,{observe:'response'})
            .pipe(
+            delay(2000),
             map(response=> {
               const count= parseInt(response.headers.get('X-Total-Count')||"0",10);
               const users= response.body as UserModel[]
