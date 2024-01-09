@@ -20,7 +20,7 @@ export class UserService {
   getUsers=(page=1,limit=10)=>
            this.http.get(this.baseUrl+`?_page=${page}&_limit=${limit}`,{observe:'response'})
            .pipe(
-            delay(2000),
+            delay(1500),
             map(response=> {
               const count= parseInt(response.headers.get('X-Total-Count')||"0",10);
               const users= response.body as UserModel[]
