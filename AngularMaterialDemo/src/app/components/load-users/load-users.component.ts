@@ -31,6 +31,8 @@ export class LoadUsersComponent implements OnInit, AfterViewInit {
 
   dataSourceFilters = new MatTableDataSource(this.dataSource.data);
 
+  isLoading = false;
+
   constructor(
     private userService: UserService,
     public  dialog: MatDialog,
@@ -48,11 +50,15 @@ export class LoadUsersComponent implements OnInit, AfterViewInit {
   }
 
   loadUsers() {
+    this.isLoading = true;
     this.userService.getUsers(this.pageIndex + 1, this.pageSize).subscribe((response) => {
         this.dataSource.data = response.users;
         this.pageLength = response.count;
         this.count = response.count;
-      },() => this.messageService.onError()
+        this.isLoading = false;
+      },() => {
+          this.messageService.onError();
+        }
     );
   }
 

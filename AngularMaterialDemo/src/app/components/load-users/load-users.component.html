@@ -41,9 +41,9 @@
       </mat-cell>
     </ng-container>
 
-    <tr *matNoDataRow class="noRecord">
-      <td *ngIf="dataSource.data.length === 0">
-        <h4>Nenhum registro encontrado!</h4>
+    <tr *matNoDataRow>
+      <td *ngIf="dataSource.data.length === 0 && !isLoading">
+        <h4 class="noRecord">Nenhum registro encontrado!</h4>
       </td>
     </tr>
 
@@ -62,6 +62,10 @@
     (page)="changePage($event)"
     aria-label="Select page">
   </mat-paginator>
+
+  <mat-card *ngIf="isLoading && dataSource.data.length === 0" class="mat-elevation-z8 loading">
+    <mat-spinner color="primary" mode="indeterminate"></mat-spinner>
+  </mat-card>
 
 </div>
 

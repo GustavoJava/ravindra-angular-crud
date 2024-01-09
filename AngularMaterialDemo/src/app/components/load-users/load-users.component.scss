@@ -12,8 +12,7 @@ table {
 }
 
 .noRecord {
-  font-weight: bold;
-  font-size: medium;
+  font-weight: 500;
   color: red;
 }
 
@@ -21,4 +20,11 @@ tr, td {
   display: flex;
   justify-content: center;
 }
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
