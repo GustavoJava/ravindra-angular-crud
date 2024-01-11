@@ -21,11 +21,10 @@ export class LoadUsersComponent implements OnInit, AfterViewInit {
 
   @ViewChild('empTbSort') empTbSort = new MatSort();
 
-  pageSizeOptions = [3, 6, 9, 12];
+  pageSizeOptions = [5, 10, 20];
   pageSize = 5;
   pageIndex = 0;
-  pageLength = 0; //total records in db..
-  count = 0;
+  totalElements = 0; //total records in db..
 
   datasource = new MatTableDataSource<UserModel>();
 
@@ -53,8 +52,7 @@ export class LoadUsersComponent implements OnInit, AfterViewInit {
     this.isLoading = true;
     this.userService.getUsers(this.pageIndex + 1, this.pageSize).subscribe((response) => {
         this.dataSource.data = response.users;
-        this.pageLength = response.count;
-        this.count = response.count;
+        this.totalElements = response.totalElements;
         this.isLoading = false;
       },() => {
           this.messageService.onError();
@@ -108,6 +106,8 @@ export class LoadUsersComponent implements OnInit, AfterViewInit {
   changePage(event: PageEvent) {
     this.pageSize = event.pageSize;
     this.pageIndex = event.pageIndex;
+    console.log("pageSize ", this.pageSize);
+    console.log("pageIndex ", this.pageIndex);
     this.loadUsers();
   }
 

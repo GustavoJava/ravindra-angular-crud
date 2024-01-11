@@ -17,14 +17,14 @@ export class UserService {
        return this.http.put(`${this.baseUrl}/${user.id}`,user);
   }
 
-  getUsers=(page=1,limit=10)=>
+  getUsers=(page: number,limit: number)=>
            this.http.get(this.baseUrl+`?_page=${page}&_limit=${limit}`,{observe:'response'})
            .pipe(
             delay(1500),
             map(response=> {
-              const count= parseInt(response.headers.get('X-Total-Count')||"0",10);
-              const users= response.body as UserModel[]
-              return {users,count}
+              const totalElements = parseInt(response.headers.get('X-Total-Count')||"0",10);
+              const users = response.body as UserModel[]
+              return {users, totalElements}
             })
            )
 
