@@ -1,5 +1,5 @@
 <h2>Users</h2>
-<h4 *ngIf="dataSource.data.length>0">{{count}} user(s) registered </h4>
+<h4 *ngIf="dataSource.data.length>0">{{totalElements}} user(s) registered </h4>
 
 <div *ngIf="dataSource.data.length>0">
   <mat-form-field appearance="standard">
@@ -54,7 +54,7 @@
   <mat-paginator
     *ngIf="dataSource.data.length>0"
     class="mat-elevation-z8"
-    [length]="pageLength"
+    [length]="totalElements"
     [pageIndex]="pageIndex"
     [pageSize]="pageSize"
     [pageSizeOptions]="pageSizeOptions"
